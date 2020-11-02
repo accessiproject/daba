@@ -1,0 +1,97 @@
+var aw = aw || {};
+
+aw.dpARIA = (function () {
+  function accordion (ouvert) {
+    var headerClass = 'accordeon';
+    var panelClass = 'panneau';
+    var hidingClass = 'cache';
+
+    var accordionPanels = document.querySelectorAll('.' + panelClass);
+    [].map.call(accordionPanels, function(el, i) {
+      if (ouvert === true) {
+		// ne rien changer
+	  } else {
+		  if (el.classList) {
+			el.classList.add(hidingClass);
+		  } else {
+			el.className += ' ' + hidingClass;
+		  }
+	  }
+    });
+    
+    var accordionHeaders = document.querySelectorAll('.' + headerClass);
+    [].map.call(accordionHeaders, function(el, i) {
+      var button = document.createElement('button');
+      if (ouvert === true) {
+		  button.setAttribute('aria-expanded', 'true');
+	  } else {
+		  button.setAttribute('aria-expanded', 'false');
+	  }
+      button.innerHTML = el.innerHTML;
+      el.innerHTML = '';
+      el.appendChild(button);
+    });
+    
+    var accordionHeadersButtons = document.querySelectorAll('.' + headerClass + ' button');
+    [].map.call(accordionHeadersButtons, function(el, i) {
+      el.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded');
+        var nextPanel = this.parentNode.nextElementSibling;
+
+        if (nextPanel.classList) {
+          nextPanel.classList.toggle(hidingClass);
+        } else {
+          var classes = nextPanel.className.split(' ');
+          var existingIndex = classes.indexOf(hidingClass);
+          
+          if (existingIndex >= 0) {
+            classes.splice(existingIndex, 1);
+          } else {
+            classes.push(hidingClass);
+          }
+          
+          nextPanel.className = classes.join(' ');
+        }
+        
+        this.setAttribute('aria-expanded', (expanded == 'false' ? 'true' : 'false'));
+      });
+    });
+  };
+  
+  return {
+    accordion: accordion
+  }
+})();
+
+var init = function() {
+	
+	// On cherche la présence d'une ancre
+	url = window.location.hash;
+	var ancre = url.split('?');
+	url = ancre['0'];
+	if (url === '') {
+		// Accordéon fermé par défaut
+		aw.dpARIA.accordion(false);
+	} else {
+		// Accordéon ouvert par défaut
+		aw.dpARIA.accordion(true);
+	}
+}
+
+function domReady(fn) {
+  if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', function() {
+      document.removeEventListener('DOMContentLoaded', arguments.callee, false);
+      fn();
+    }, false);
+  } else if (document.attachEvent) {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState === 'complete') {
+        document.detachEvent('onreadystatechange', arguments.callee);
+        fn();
+      }
+    });
+  }
+}
+
+domReady(init);

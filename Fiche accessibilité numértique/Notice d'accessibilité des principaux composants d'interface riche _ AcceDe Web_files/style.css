@@ -1,0 +1,1083 @@
+@charset "utf-8";
+
+/************************************************************************
+*
+*	R E S E T       ET       B A S E
+*
+*************************************************************************/
+
+/* ---------------------------------------------------------------------- Page */
+	body {
+		font-family:helvetica, arial, sans-serif;
+		font-size:1.2em;
+		line-height:1.8em;
+		color:#444;
+		background:#e1e1e1 url('images/motif-01.png') repeat-x;
+		padding:0;
+		margin:0
+	}
+/* ---------------------------------------------------------------------- Paragraphes */
+	p {margin:0 0 1.5em 0}
+/* ---------------------------------------------------------------------- Liens */
+	a {
+		color:#444;
+		text-decoration:none;
+		border-bottom:1px dashed transparent;
+		transition:all 0.3s ease-in-out
+	}
+	a:hover,
+	a:focus,
+	a:active {
+		color:#562982;
+		border-bottom-color:#562982
+	}
+	a:active {outline:none}
+/* ---------------------------------------------------------------------- Images */
+	img {vertical-align:middle}
+	a img {border:none}
+/* ---------------------------------------------------------------------- Listes */
+	ul {
+		list-style:none;
+		padding:0
+	}
+/* ---------------------------------------------------------------------- Formulaires */
+	form {
+		border:none;
+		padding:0;
+		margin:0
+	}
+/* ------------------------------------------------------------ Champs */
+	input,
+	textarea  {
+		font-family:helvetica, arial, sans-serif;
+		font-size:1em;
+		vertical-align:middle;
+		transition:all 0.3s ease-in-out
+	}
+	input[type=text],
+	input[type=password],
+	input[type=email],
+	textarea {
+		width:14.5em;
+		color:#767676;
+		border:1px solid #9cc470;
+		padding:.5em .6em
+	}
+	textarea {
+		width:19em;
+		height:12em
+	}
+	input[type=text]:hover,
+	input[type=text]:focus,
+	input[type=password]:hover,
+	input[type=password]:focus,
+	input[type=email]:hover,
+	input[type=email]:focus,
+	textarea:hover,
+	textarea:focus {color:#444}
+	input[type=text]:focus,
+	input[type=email]:focus,
+	textarea:focus {box-shadow:none}
+/* ------------------------------------------------------------ Boutons */
+	input[type=submit], input[type=button] {
+		color:#fff;
+		border:0;
+		background:#562982;
+		padding:.5em 1.1em;
+		cursor:pointer
+	}
+	input[type=submit]:hover, input[type=button]:hover,
+	input[type=submit]:focus, input[type=button]:focus	{background:#767676}
+/* ---------------------------------------------------------------------- Type ligne */
+	em {
+		font-style:italic;
+		font-weight:normal
+	}
+	strong {
+		font-style:normal;
+		font-weight:bold
+	}
+	strong > em {
+		font-weight:bold
+	}
+	i.style-01 {color:#4040ff}
+	abbr[title] {
+		text-decoration:none;
+		border-bottom:1px dashed #767676;
+		cursor:help
+	}
+	a abbr[title] {
+		border-bottom:none;
+		cursor:pointer
+	}
+	kbd {
+		font-family:helvetica, arial, sans-serif;
+		background:#e5e5e5;
+		border:1px solid #e6e6e6;
+		border-right:1px solid #999;
+		border-bottom:1px solid #999;
+		padding:0 .3em
+	}
+/* ---------------------------------------------------------------------- Type bloc */
+	hr {
+		border:1px dashed #ccc;
+		margin-bottom:2em
+	}
+	div.bloc {
+		float:left;
+		width:100%
+	}
+	blockquote {
+		font-style:italic;
+		color:#666;
+		border-left:.4em solid #ddd;
+		padding:0 0 0 1em;
+		margin:0 0 1.5em 0
+	}
+/* ---------------------------------------------------------------------- Font Awesome */
+	@font-face {
+		font-family:'FontAwesome';
+		src:url('fonts/fontawesome-webfont.eot?v=4.0.3');
+		src:url('fonts/fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'),
+			url('fonts/fontawesome-webfont.woff?v=4.0.3') format('woff'),
+			url('fonts/fontawesome-webfont.ttf?v=4.0.3') format('truetype'),
+			url('fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg');
+		font-weight:normal;
+		font-style:normal
+	}
+	.fa {
+		display:inline-block;
+		font-family:FontAwesome
+	}
+	.fa:before,
+	.fa:after {-moz-box-sizing:border-box}
+	.telechargement:before {content:"\f019"}
+	.mobile:before {content:"\f10b"}
+	.attention:before {content:"\f071"}
+	.remarque:before {content:"\f05a"}
+	.astuce:before {content:"\f0eb"}
+	.gauche:before {content:"\f0d9"}
+	.droite:before {content:"\f0da"}
+	.haut:before {content:"\f0d8"}
+	.bas:before {content:"\f0d7"}
+	.crayon:before {content:"\f040"}
+	.reponse:before {content:"\f112"}
+	.twitter:before {content:"\f099"}
+	.croix:before {
+		content:"\f00d";
+		color:#FF4040
+	}
+	.tild:before {
+		content:"\f00c";
+		color:#40A43A;
+	}
+	.exclamation:before {
+		content:"\f12a";
+		color:#E86C1A;
+	}
+
+/************************************************************************
+*
+*	S T R U C T U R E       ET       C O N T E N U    
+*
+*************************************************************************/
+
+/* ---------------------------------------------------------------------- Document */
+	div[role=document]  {
+		overflow:hidden;
+		width:1230px;
+		background:#f8f8f8;
+		padding:2em 0 0 0;
+		margin:0 auto;
+		box-shadow:0 1em 1.5em 1em #ccc
+	}
+/* ------------------------------------------------------------ Bannière */
+	header[role=banner]  {
+		padding:0 50px;
+		margin:0 0 3em 0
+	}
+/* -------------------------------------------------- Liens */
+	header[role=banner] p {
+		position:relative;
+		top:-1em;
+		float:right;
+		font-size:.9em;
+		margin-bottom:.2em
+	}
+	header[role=banner] p a {
+		margin:0 0 0 2em;
+		opacity:0
+	}
+	header[role=banner] p a:hover,
+	header[role=banner] p a:focus {opacity:1}
+	
+	header[role=banner] p a:last-child,
+	header[role=banner] p a:hover,
+	header[role=banner] p a:focus {opacity:1}
+/* -------------------------------------------------- Recherche */
+	header[role=banner] form {
+		clear:both;
+		float:right
+	}
+/* -------------------------------------------------- Logo */
+	header[role=banner] img {margin-top:.7em}
+	header[role=banner] #logo {border:0}
+/* ------------------------------------------------------------ Navigation principale */
+	#nav-principale ul {
+		text-align:center;
+		font-size:1.1em;
+		background:#767676;
+		margin:0 0 1.5em 0
+	}
+	#nav-principale li {display:inline}
+	#nav-principale a,
+	#nav-principale strong {
+		position:relative;
+		display:inline-block;
+		font-weight:normal;
+		color:#fff;
+		border:0;
+		padding:.6em 1em;
+		margin:0 2em;
+		text-shadow:0 .04em .04em rgba(0,0,0,.8)
+	}
+	#nav-principale a::before,
+	#nav-principale strong::before {
+		content:'';
+		position:absolute;
+		top:0;
+		bottom:0;
+		right:0;
+		left:0;
+		border:.35em solid transparent;
+		transition:all 0.3s ease-in-out
+	}
+	#nav-principale a:hover,
+	#nav-principale a:focus,
+	#nav-principale a:active,
+	#nav-principale a.courante,
+	#nav-principale strong {
+		background-color:#562982;
+		text-shadow:0 0 0 rgba(0,0,0,0)
+	}
+	#nav-principale a:hover::before,
+	#nav-principale a:focus::before,
+	#nav-principale a:active::before,
+	#nav-principale a.courante::before,
+	#nav-principale strong::before {
+		border-color:#562982;
+		margin:-.3em
+	}
+	#nav-principale a.courante:hover,
+	#nav-principale a.courante:focus,
+	#nav-principale a.courante:active {text-decoration:underline}
+/* ------------------------------------------------------------ Fil d'ariane */
+	#fil-ariane {
+		font-size:.8em;
+		line-height: 1.7em;
+		color:#666;
+		margin:0 338px 1.5em 60px
+	}
+	#fil-ariane a,
+	#fil-ariane strong {
+		color:#666;
+		margin:0 .2em
+	}
+	#fil-ariane a:hover,
+	#fil-ariane a:focus,
+	#fil-ariane a:active {color:#562982}
+/* ------------------------------------------------------------ Contenu principal */
+	main {
+		float:left;
+		width:730px;
+		border:1px solid #fff;
+		background:#fff;
+		padding:.6em 50px;
+		margin:0 0 1.7em 60px
+	}
+	main:focus {outline:none}
+/* -------------------------------------------------- Titres */
+	main h1,
+	main h2,
+	main h3,
+	main h4 {
+		font-weight:normal;
+		line-height:1.45em;
+		margin-bottom:.5em
+	}
+	main h1 {
+		font-size:2.2em;
+		color:#4e9600
+	}
+	main h2 {
+		font-size:1.7em;
+		color:#562982;
+		margin-top:1.5em
+	}
+	main h1 + h2 {margin-top:1em}
+	main h3 {
+		font-size:1.5em;
+		color:#222
+	}
+	main h4 {
+		font-size:1.3em;
+		color:#666
+	}
+/* -------------------------------------------------- Liens */
+	main a {
+		color:#4a7b05;
+		border-bottom:1px solid #9cc470
+	}
+	main a:hover,
+	main a:focus,
+	main a:active {
+		color:#562982;
+		border-bottom-color:transparent
+	}
+/* ---------------------------------------- Complément d'infos */
+	main a span.infos {
+		font-size:.8em;
+		color:#444;
+		border-bottom:1px solid #fff;
+		padding-bottom:1px
+	}
+/* ---------------------------------------- De téléchargement */
+	main a span.telechargement {
+		color:#767676;
+		margin:0 .1em 0 0
+	}
+/* -------------------------------------------------- Listes */
+	main ul,
+	main ol {margin:0 0 1.5em 0}
+	main ul ul,
+	main ol ol {
+		font-size:.9em;
+		line-height:1.65em;
+		padding:.3em 0 0 1.5em;
+		margin-bottom:.5em
+	}
+	main li {
+		background:url('images/puce-01.png') no-repeat left .7em;
+		padding:0 0 0 1em;
+		margin:0 0 1em 0
+	}
+/* ---------------------------------------- Non-ordonnées */
+	main ul ul li {
+		background:url('images/puce-02.png') no-repeat left .6em;
+		margin-bottom:.5em
+	}
+/* ---------------------------------------- Ordonnées */
+	main ol {padding:0 0 0 1.2em}
+	main ol li {
+		background:none;
+		list-style-position:outside;
+		list-style-type:decimal;
+		padding-left:0
+	}
+	main ol ol li {list-style-type:lower-alpha}
+/* -------------------------------------------------- Images */
+	img.style-01 {
+		background:#f8f8f8;
+		border:1px solid #ddd;
+		padding:20px
+	}
+	img.avatar {border:1px solid #ddd}
+/* ---------------------------------------- Alignements */
+	img.alignement-01,
+	img.avatar {
+		float:left;
+		margin:0 1.2em .5em 0
+	}
+	img.alignement-02 {
+		float:right;
+		margin:0 0 .5em 1.2em
+	}
+	img.alignement-03 {
+		display:block;
+		margin:0 auto .5em auto
+	}
+/* ---------------------------------------- Légendées */
+	figure {
+		text-align:center;
+		margin:0
+	}
+
+	figure img {
+		margin:0 0 1.5em 0
+	}
+
+	figure .fa {font-size:2em}
+	figure .fa:before {position:relative}
+	figure .croix:before {left:.4em}
+	figure .tild:before {left:.6em}
+	figure .exclamation:before {left:.2em}
+	figcaption {
+		font-size:.9em;
+		font-style:italic;
+		line-height:1.5em;
+		color:#696969;
+		margin-top: -0.6em;
+		margin-bottom: 1em;
+	}
+/* -------------------------------------------------- Encart */
+	div.encart {
+		background:#ebf4e2;
+		padding:1.5em 2em 1px 2em;
+		margin:0 0 2em 0
+	}
+	div.encart-remarque,
+	div.encart-personnalisation {background:#f4f4f4}
+	div.encart-attention {background:#f5f1f8}
+/* ---------------------------------------- Titres */
+	div.encart h2,
+	div.encart h3	{
+		font-size:1.5em;
+		color:#444;
+		margin:0 0 .7em 0
+	}
+	div.encart span.fa {margin:0 .2em 0 0}
+/* ---------------------------------------- Liens */
+	main div.encart a span.infos {border-bottom-color:#ebf4e2}
+/* -------------------------------------------------- Codes */
+	pre {
+		position:relative;
+		/*overflow:auto;*/
+		white-space:pre-wrap;
+		word-wrap:break-word;
+		font-size:1.25em;
+		border:1px dashed #ddd;
+		background:#f8f8f8;
+		padding:1em;
+		margin:0 0 1.5em 0
+	}
+	pre strong {color:#562982}
+	pre .croix:before,
+	pre .tild:before,
+	pre .exclamation:before {
+		position:absolute;
+		left:-.4em;
+		top:-.6em;
+		font-size:1.5em
+	}
+	pre .exclamation:before {
+		left:-.2em;
+		top:-.4em
+	}
+	code {font-size:1.2em}
+/* ---------------------------------------- Coloration syntaxique */
+	main .code-embed-wrapper {
+    padding:0;
+    margin:0 0 1.5em 0;
+  }
+	.code-embed-wrapper code {font-size:0.75em}
+	main pre[class*="language-"] {
+		color:#4e9600;
+		background:#f8f8f8;
+		border:1px dashed #ddd;
+		border-radius:0;
+		box-shadow:none;
+		text-shadow:none;
+		margin:0 0 1.5em 0
+	}
+	main code[class*="language-"] {
+		color:#4e9600;
+		text-shadow:none
+	}
+	main .language-markup .token.tag,
+	main .language-markup .token.attr-name,
+	main .language-markup .token.punctuation,
+	main .token.selector,
+	main .token.property {color:#444}
+	main .token.attr-name,
+	main .token.attr-value,
+	main .token.string,
+	main .token.char,
+	main .token.operator,
+	main .token.entity,
+	main .token.url,
+	main .language-css
+	main .token.string,
+	main .style .token.string,
+	main .token.variable,
+	main .token.inserted {color:#562982}
+/* -------------------------------------------------- Tableaux */
+	table.style-01 {
+		width:100%;
+		table-layout:fixed;
+		font-size:.85em;
+		border-collapse:collapse;
+		border-bottom:1px solid #ddd;
+		border-right:1px solid #ddd;
+		margin:0 0 2em 0
+	}
+	table.style-01 th,
+	table.style-01 td {
+		border-top:1px solid #ddd;
+		border-left:1px solid #ddd;
+		padding:.7em
+	}
+	table.style-01 th {background:#f3f3f3}
+	table.style-01 th[scope="row"] {text-align:left}
+	table.style-01 td {
+		text-align:center;
+		background:#fff
+	}
+	table.style-01 tr:first-child td:first-child {border:0}
+/* -------------------------------------------------- Système d'accordéon */
+	main h2.accordeon {margin-bottom:.7em}
+	button {
+		font-size:1em;
+		line-height:1em;
+		color:#4a7b05;
+		background:none;
+		border:0;
+		padding:0 0 .15em 0;
+		cursor:pointer;
+		transition:all 0.3s ease-in-out
+	}
+	button::-moz-focus-inner {border:0}
+	button:hover,
+	button:focus {outline:none}
+	main h2.accordeon button,
+	main h2.accordeon a {
+		display:block;
+		width:100%;
+		text-align:left;
+		border-bottom:1px dashed #9cc470
+	}
+	main h2.accordeon button:hover,
+	main h2.accordeon button:focus,
+	main h2.accordeon button:active,
+	main h2.accordeon button[aria-expanded=true],
+	main h2.accordeon a:hover,
+	main h2.accordeon a:focus,
+	main h2.accordeon a:active,
+	main h2.accordeon a[aria-expanded=true] {
+		color:#562982;
+		border-bottom-color:#a4a0c5
+	}
+	main h2.accordeon span.bas {display:none}
+	main h2.accordeon button span.bas,
+	main h2.accordeon a span.bas {
+		display:inline;
+		float:right;
+		font-size:.8em;
+		margin-top:.2em;
+		transition:all 0.3s ease-in-out
+	}
+	main h2.accordeon button[aria-expanded=false] span.bas,
+	main h2.accordeon a[aria-expanded=false] span.bas {transform:rotate(-90deg)}
+	main h2.accordeon button[aria-expanded=false]:hover span.bas,
+	main h2.accordeon button[aria-expanded=false]:focus span.bas,
+	main h2.accordeon button[aria-expanded=true] span.bas,
+	main h2.accordeon a[aria-expanded=false]:hover span.bas,
+	main h2.accordeon a[aria-expanded=false]:focus span.bas,
+	main h2.accordeon a[aria-expanded=true] span.bas {transform:rotate(0)}
+	main div.panneau.cache {display:none}
+/* ---------------------------------------- Encart "Mise à jour" */
+	main h2.maj button {
+		font-size:0.8em;
+		color:#767676
+	}
+	div.panneau dt {
+		display:block;
+		font-weight:bold;
+		margin: 1em 0 0 0;
+	}
+	div.panneau dd {
+		display:block;
+		margin:0;
+	}
+/* -------------------------------------------------- Formulaires */
+/* ---------------------------------------- Aides à la saisie */
+	.alerte {
+		font-size:.9em;
+		color:#ef0101;
+		margin-bottom:2em
+	}
+	span.alerte {font-size:1.2em}
+/* ---------------------------------------- Label */
+	label {
+		display:inline-block;
+		width:32%;
+		text-align:right;
+		vertical-align:top;
+		padding:0 .5em 0 0
+	}
+/* ---------------------------------------- Champs */
+	main p input[type=text],
+	main p input[type=password],
+	main p input[type=mail] {
+		margin-top:-5px;
+		margin-bottom:.5em
+	}
+		#user_login {
+			margin-top: 15px;
+		}
+	main p textarea	{margin-bottom:.5em}
+/* ---------------------------------------- Boutons */
+	p.actions {
+		padding:0 0 0 32%;
+		margin-left:15px
+	}
+	p.login-submit {
+		padding:0 0 0 32%;
+		margin-left:15px
+	}
+/* ---------------------------------------- Notification et mémorisation connexion */
+	#notification {
+		padding:0 0 0 32%;
+		margin-left:15px
+	}
+	#notification label {
+		display:inline;
+		width:auto;
+		text-align:left;
+		vertical-align:middle;
+		padding:0 0 0 .5em
+	}
+	.login-remember {
+		padding:0 0 0 30%;
+		margin-left:15px
+	}
+	.login-remember label {
+		display:inline;
+		width:auto;
+		text-align:left;
+		vertical-align:middle;
+		padding:0 0 0 .5em
+	}
+/* ---------------------------------------- Démonstrations */
+	fieldset.demo {
+		border:0;
+		padding:0
+	}
+	fieldset.demo legend {
+		width:100%;
+		font-size:1.5em;
+		color:#222;
+		padding:0;
+		margin:0 0 .7em 0
+	}
+	main fieldset.demo li {
+		background:none;
+		padding:0;
+		margin-bottom:.5em
+	}
+	main fieldset.demo label {
+		display:inline;
+		width:auto;
+		text-align:left;
+		padding: 0 0 0 2rem;
+    	position: relative;
+	}
+	fieldset.demo input {
+		position:absolute;
+		z-index:100;
+		margin:.6em 0 0 .2em
+	}
+	fieldset.demo input + label span::before {
+		position:relative;
+		top:.35em;
+		z-index:200;
+		margin:0 .5em 0 0
+	}
+/* ------------------------------ Boutons radio */
+
+  fieldset.demo input[type=radio] {
+    opacity: 0;
+  }
+
+  fieldset.demo input[type=radio] + label::before,
+  fieldset.demo input[type=radio] + label::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  fieldset.demo input[type=radio] + label::before {
+    left: 0.5rem;
+    top: 0.2rem;
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    border: 0.05rem solid black;
+    background: white;
+  }
+
+  fieldset.demo input[type=radio]:checked + label::after {
+    left: 0.7rem;
+    top: 0.4rem;
+    border: 0.25rem solid #4a7b05;
+  }
+
+  fieldset.demo input[type=radio]:focus + label::before {
+    outline: 0.05rem dotted;
+  }
+
+/* ------------------------------ Checkbox */
+  fieldset.demo input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+  }
+  fieldset.demo input[type=checkbox] + label::before,
+	fieldset.demo input[type=checkbox] + label::after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+  }
+  fieldset.demo input[type=checkbox] + label::before {
+    left: 0.5rem;
+    top: 0.15rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    border: 0.05rem solid black;
+    background: white;
+  }
+  fieldset.demo input[type=checkbox]:checked + label::after {
+    left: 0.6rem;
+    top: 0.28rem;
+    height: 0.8rem;
+    border-left: 0.8rem solid #4a7b05;
+  }
+  fieldset.demo input[type=checkbox]:focus + label::before {
+    outline: 0.05rem dotted;
+  }
+
+/* -------------------------------------------------- Liens vers les notices de la page d'accueil */
+ 
+#notices {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+#notices li {
+    flex: 1;
+	background: transparent;
+	padding: 0;
+	margin: 0 0 2rem 0;
+}
+
+#notices a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    background: #4a7b05;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.35rem 0.5rem 0.35rem 3.5rem;
+    font: 1rem sans-serif;
+    text-shadow: 0.05rem 0.05rem 0.05rem black;
+    position: relative;
+}
+
+#notices a:focus {
+    text-decoration: none;
+}
+
+#notices a::before,
+#notices a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+#notices a::before {
+    z-index: 1000;
+    left: 0;
+    top: -0.3rem;
+    border-left: 2.25rem solid white;
+    border-top: 3rem solid transparent;
+    border-bottom: 3rem solid transparent;
+}
+
+#notices a::after {
+    z-index: 2000;
+    right: -2rem;
+    top: 0;
+    border-left: 2rem solid #4a7b05;
+    border-top: 2.7rem solid transparent;
+    border-bottom: 2.7rem solid transparent;
+}
+
+#notices a:focus {
+  outline: none;
+}
+
+#notices a span {
+  padding: 0.2rem;
+}
+
+#notices a:focus span {
+  outline: 0.15rem dotted;
+}
+
+
+/* -------------------------------------------------- Commentaires */
+	#commentaires ul {margin:0 0 2em 0}
+	#commentaires li[id] {
+		border-bottom:1px solid #eaeaea;
+		background:none;
+		padding:0;
+		margin:1em 0 0 0
+	}
+	#commentaires p.metas {
+		font-size:.9em;
+		font-style:italic;
+		color:#767676;
+		margin-bottom:.8em
+	}
+	#commentaires span.crayon {
+		font-size:.9em;
+		color:#999;
+		margin:0 .4em 0 0
+	}
+/* ------------------------------ Réponses */
+	p.repondre {
+		font-size:.9em;
+		text-align:right;
+		margin-bottom:1em
+	}
+	p.repondre span.reponse {
+		font-size:.8em;
+		color:#999;
+		transform:rotate(35deg)
+	}
+	#commentaires ul.children {
+		font-size:1em;
+		border-top:1px solid #eaeaea;
+		padding:0;
+		margin-left:3em;
+		margin-bottom:0
+	}
+	#commentaires ul.children li:last-child {border:0}
+/* -------------------------------------------------- Plan du site */
+	#plan-site a {border-bottom-color:transparent}
+	#plan-site a:hover,
+	#plan-site a:focus,
+	#plan-site a:active {border-bottom-color:#562982}
+/* -------------------------------------------------- Pagination */
+	#pagination {
+		overflow:hidden;
+		color:#666;
+		background:#efefef;
+		padding:1em 1.2em;
+		margin:2.4em 0 1.4em 0
+	}
+	#pagination a {
+		color:#666;
+		border:1px dashed #efefef;
+	}
+	#pagination a:hover,
+	#pagination a:focus,
+	#pagination a:active {
+		color:#562982;
+		border-bottom:1px dashed #562982
+	}
+	#precedent {
+		float:left;
+		margin:0 .8em 0 0
+	}
+	#suivant {
+		float:right;
+		margin:0 0 0 .8em
+	}
+	#pagination span.fa {margin:0 .2em}
+/* -------------------------------------------------- Haut de page */
+	#haut-page {
+		clear:both;
+		text-align:right;
+		font-size:.9em;
+		color:#767676;
+		padding:1em 0 0 0;
+		margin-bottom:1em
+	}
+	main #haut-page a {
+		color:#767676;
+		border:1px dashed #fff;
+		margin:0 .2em 0 0
+	}
+	main #haut-page a:hover,
+	main #haut-page a:focus,
+	main #haut-page a:active {
+		color:#562982;
+		border-bottom:1px dashed #562982
+	}
+/* ------------------------------------------------------------ Colonne 01 (droite) */
+	#colonne-01 {
+		float:right;
+		width:238px;
+		font-size:.85em;
+		line-height:1.7em;
+		margin:0 60px 1.7em 40px
+	}
+	#colonne-01:focus {outline:none}
+/* -------------------------------------------------- Titres */
+	#colonne-01 h1 {
+		font-size:1.4em;
+		font-weight:normal;
+		border-bottom:1px dashed #a4a0c5;
+		padding:0 0 .3em 0;
+		margin-bottom:1.2em
+	}
+/* -------------------------------------------------- Menu secondaire */
+	#colonne-01 ul {
+		line-height:1.6em;
+		margin:0 0 4em 0
+	}
+	#colonne-01 li {
+		background:url('images/puce-01.png') no-repeat left .6em;
+		padding:0 0 0 1em;
+		margin:0 0 1em 0
+	}
+/* ---------------------------------------- Second niveau */
+	#colonne-01 ul ul {
+		font-size:.9em;
+		padding-left:.5em;
+		margin-top:.7em;
+		margin-bottom:1.7em
+	}
+	#colonne-01 li li {background-image:url('images/puce-02.png')}
+/* -------------------------------------------------- Images */
+	#colonne-01 p a,
+	#colonne-01 address p a	{border:0}
+/* -------------------------------------------------- Contact */
+	#colonne-01 address {
+		font-style:normal;
+		margin:0 0 4em 0
+	}
+	#colonne-01 address p {margin-bottom:1em}
+	#colonne-01 address a, 
+	#colonne-01 a.link {
+		color:#562982;
+		border-bottom:1px solid #a4a0c5
+	}
+	#colonne-01 address a:hover,
+	#colonne-01 a.link:hover,
+	#colonne-01 address a:focus,
+	#colonne-01 a.link:focus,
+	#colonne-01 address a:active,
+	#colonne-01 a.link:active {
+		color:#444;
+		border-bottom:transparent
+	}
+	#colonne-01 address span.twitter {
+		font-size:1.1em;
+		color:#5ea9dd;
+		margin:0 .2em 0 0
+	}
+/* ------------------------------------------------------------ Partenaires */
+	#partenaires {
+		clear:both;
+		background:#fff;
+		padding:1.2em 50px .8em 50px;
+		margin:0 60px 1.2em 60px
+	}
+	#partenaires h1 {
+		font-size:.9em;
+		margin:0
+	}
+	#partenaires ul {
+		text-align:center;
+		margin:.4em 0
+	}
+/* -------------------------------------------------- Fondateurs */
+	#fondateurs {padding-bottom:.5em}
+	#fondateurs li {
+		display:inline-block;
+		margin:0 2em .5em 2em
+	}
+	#fondateurs a:hover {
+		border: none;
+	}
+	#fondateurs a:hover {
+		border: none;
+	}
+/* -------------------------------------------------- Soutiens */
+	#soutiens {font-size:.75em}
+	#soutiens li {
+		display:inline;
+		margin:0 .8em
+	}
+/* ------------------------------------------------------------ Pied de page */
+	footer[role=contentinfo] {
+		clear:both;
+		font-size:.9em;
+		text-align:right;
+		padding:0 60px 0 0
+	}
+	footer[role=contentinfo] ul {margin:0 0 1.5em 0}
+	footer[role=contentinfo] li {display:inline}
+	footer[role=contentinfo] span {
+		display:inline-block;
+		vertical-align:top;
+		font-size:.8em;
+		color:#ccc;
+		margin:0 1em
+	}
+	
+/************************************************************************
+*
+*	I M P R E S S I O N
+*
+*************************************************************************/
+
+	@media print {
+	/* ---------------------------------------------------------------------- Page */
+		body {
+			font-family:serif;
+			font-size:11pt;
+			background:#fff
+		}
+	/* ---------------------------------------------------------------------- Divers */
+		abbr[title] {border:none}
+	/* ---------------------------------------------------------------------- Éléments masqués */
+		form,
+		header,
+		#nav-principale,
+		#fil-ariane,
+		main a img,
+		#haut-page,
+		#colonne-01,
+		footer[role=contentinfo] {display:none}
+	/* ---------------------------------------------------------------------- Éléments modifiés */
+		div[role=document]  {
+			width:auto;
+			background:#fff;
+			padding:0;
+			box-shadow:0 0 0 0 #fff
+		}
+		main {
+			width:auto;
+			border:0;
+			padding:0;
+			margin:0
+		}
+		main h1 {
+			font-size:22pt;
+			padding-left:0
+		}
+		main h2 {
+			font-size:18pt;
+			padding:0 0 .3em 0
+		}
+		main h3 {font-size:15pt}
+		main h4 {font-size:13pt}
+		main a {
+			color:#000;
+			border:0
+		}
+		main li {
+			list-style-type:square;
+			list-style-position:inside
+		}
+	/* ---------------------------------------------------------------------- Éléments améliorés */
+		a:after {content:" (" attr(href) ") "}
+		a[href^="/"]:after {content:" (http://blog.atalan.fr" attr(href) ") "}
+		abbr[title]:after {content:" (" attr(title) ") "}
+		blockquote[title]:after {content:" (" attr(cite) ") "}
+	}
